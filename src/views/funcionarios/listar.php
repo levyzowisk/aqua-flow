@@ -1,5 +1,6 @@
 <?php 
 include_once 'cadastrar.php';
+include_once 'editar.php';
 ?>
 
 <div class="card">
@@ -13,24 +14,32 @@ include_once 'cadastrar.php';
         <table class="table table-hover w-100">
             <thead>
                 <tr>
-                    <th class="text-start">CPF</th>
+                    <th class="text-center px-3">ID</th>
+                    <th class="text-center px-3">CPF</th>
                     <th class="text-center px-3">Nome</th>
                     <th class="text-center px-3">Admissão</th>
                     <th class="text-center px-3">Demissão</th>
-                    <th class="text-center">Status</th>
-                    <th class="text-end px-3">Ações</th>
+                    <th class="text-center px-3">Status</th>
+                    <th class="text-center px-3">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($listaDeFuncionarios as $user): ?>
                 <tr>
-                    <td class="text-start"><?= $user['cpf'] ?></td>
+                    <td class="text-center px-3"><?= $user['id'] ?></td>
+                    <td class="text-center pc-3"><?= $user['cpf'] ?></td>
                     <td class="text-center px-3"><?= htmlspecialchars($user['nome']) ?></td>
                     <td class="text-center px-3"><?= htmlspecialchars($user['data_contratacao']) ?></td>
                     <td class="text-center px-3"><?= htmlspecialchars($user['data_demissao']) ?></td>
-                    <td class="text-center   px-3"><?= htmlspecialchars($user['status']) ?></td>
-                    <td class="text-end  px-3">
-                        <a href="#" class="btn btn-sm btn-warning">Editar</a>
+                    <td class="text-center px-3"><?= htmlspecialchars($user['status']) ?></td>
+                    <td class="text-center px-3">
+                        <button type="button" 
+                            class="btn btn-sm btn-warning" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#modalEditar"
+                            data-cpf="<?= htmlspecialchars($user['cpf']) ?>">
+                            Editar
+                        </button>
                         <a href="excluir_usuario.php?id=<?= $user['id'] ?>" class="btn btn-sm btn-danger">Excluir</a>
                     </td>
                 </tr>

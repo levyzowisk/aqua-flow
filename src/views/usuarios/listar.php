@@ -14,17 +14,17 @@
         <table class="table table-striped table-hover w-full">
             <thead>
                 <tr class="">
-                    <th class="text-start px-3">ID</th>
-                    <th class="text-center px-3">Login</th>
-                    <th class="text-end px-3">Ações</th>
+                    <th class="text-center px-3">ID</th>
+                    <th class="text-center px-3">Usuário</th>
+                    <th class="text-center px-3">Ações</th>
                 </tr>
             </thead>
             <tbody >
                 <?php foreach ($listaDeUsuarios as $user): ?>
                 <tr class="">
-                    <td class="text-start px-3"><?= $user['id'] ?></td>
+                    <td class="text-center px-3"><?= $user['id'] ?></td>
                     <td class="text-center px-3"><?= htmlspecialchars($user['usuario']) ?></td>
-                    <td class="text-end px-3">
+                    <td class="text-center px-3">
                         <button type="button" 
                             class="btn btn-sm btn-warning" 
                             data-bs-toggle="modal" 

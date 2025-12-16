@@ -3,20 +3,25 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title">Editar Usuário</h5>
+                <h5 class="modal-title">Editar Meta</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label class="form-label">Usuário</label>
-                        <input type="text" name="usuario" required class="form-control">
+                        <label class="form-label">Funcionario</label>
+                        <input type="text" name="funcionario" required class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Senha</label>
-                        <input type="password" name="senha" required maxlength="8" class="form-control">
+                        <label class="form-label">Mes de Referência</label>
+                        <input type="date" name="mesRef" required class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Meta</label>
+                        <input type="number" name="meta" required class="form-control">
                     </div>
 
                     <div class="modal-footer">
@@ -33,21 +38,15 @@
 </div>
 
 <script>
-  // Seleciona o modal pelo ID
-  const modalEditar = document.getElementById('modalEditar')
+  const modalEditar = document.getElementById('modalEditar');
 
-  // Adiciona um "ouvinte" para quando o modal for exibido
   modalEditar.addEventListener('show.bs.modal', function (event) {
-    // Botão que acionou o modal
-    const button = event.relatedTarget
+    const button = event.relatedTarget;
 
-    // Extrai informações dos atributos data-*
-    const id = button.getAttribute('data-id')
-    const login = button.getAttribute('data-login')
+    const cpf = button.getAttribute('data-id')
 
-    // Atualiza o conteúdo dos inputs do modal
-    const inputId = modalEditar.querySelector('.modal-body #edit_id')
-    const inputLogin = modalEditar.querySelector('.modal-body #edit_login')
+    const inputId = modalEditar.querySelector('.modal-body #edit_id');
+    const inputLogin = modalEditar.querySelector('.modal-body #edit_login');
 
     inputId.value = id
     inputLogin.value = login
