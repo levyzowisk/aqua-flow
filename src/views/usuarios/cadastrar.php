@@ -8,23 +8,31 @@
             </div>
 
             <div class="modal-body">
-                <form action="teste.php"> 
+                <form action="../src/models/actions/usuarios/insert.php" method="post"> 
                     <div class="mb-3">
-                        <label class="form-label">Usuário</label>
-                        <input type="text" name="usuario" required class="form-control">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" id="emailUsuario" maxlength="100" required class="form-control">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Senha</label>
-                        <input type="password" name="senha" required maxlength="8" class="form-control">
+                        <input type="password" name="senha" required minlength="4" maxlength="8" class="form-control">
                     </div>
 
                     <div class="modal-footer">
                         <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button class="btn btn-primary">Salvar</button>
+                        <button class="btn btn-primary">Cadastrar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+  const modalUsuario = document.getElementById('modalUsuario');
+
+  modalUsuario.addEventListener('shown.bs.modal', () => {
+    document.getElementById('emailUsuario').focus();
+  });
+</script>

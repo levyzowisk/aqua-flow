@@ -10,8 +10,8 @@
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label class="form-label">Usuário</label>
-                        <input type="text" name="usuario" required class="form-control">
+                        <label class="form-label">Email</label>
+                        <input type="text" name="email" id="emailUsuarioUp" class="form-control">
                     </div>
 
                     <div class="mb-3">
@@ -33,19 +33,16 @@
 </div>
 
 <script>
-  // Seleciona o modal pelo ID
   const modalEditar = document.getElementById('modalEditar')
+  const inputEmail = document.getElementById('emailUsuarioUp');
 
-  // Adiciona um "ouvinte" para quando o modal for exibido
-  modalEditar.addEventListener('show.bs.modal', function (event) {
-    // Botão que acionou o modal
-    const button = event.relatedTarget
+  modalEditar.addEventListener('shown.bs.modal', function (event) {
+    const button = event.relatedTarget;
+    inputEmail.focus();
 
-    // Extrai informações dos atributos data-*
-    const id = button.getAttribute('data-id')
-    const login = button.getAttribute('data-login')
+    const id = button.getAttribute('data-id');
+    const login = button.getAttribute('data-login');
 
-    // Atualiza o conteúdo dos inputs do modal
     const inputId = modalEditar.querySelector('.modal-body #edit_id')
     const inputLogin = modalEditar.querySelector('.modal-body #edit_login')
 
