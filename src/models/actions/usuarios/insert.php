@@ -1,5 +1,4 @@
 <?php 
-    session_start();
 
     require_once __DIR__ . '/../../usuarioModel.php';
     require_once __DIR__ . '/../../utils/validations.php';
@@ -13,7 +12,6 @@
     }
 
     if(usuarioExiste($email)) {
-        echo "Usuário existente!";
         sessionError("Usuário já existente!");
     }
 
@@ -21,8 +19,6 @@
 
     criarUsuario($email, $password);
 
-    echo "Usuário cadastrado!";
     sessionSucess();
-    // header("Location: ../../../usuarios.php");
     
 ?>

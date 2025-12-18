@@ -2,7 +2,7 @@
 require_once 'conexao.php';
 
 function usuarioExiste($email) {
-    $query =  conexao()->prepare("SELECT * FROM usuario WHERE email = :email");
+    $query = conexao()->prepare("SELECT * FROM usuario WHERE email = :email");
     
     $query->execute([
         ':email' => $email
@@ -17,7 +17,7 @@ function criarUsuario($email, $password) {
         ");
 
     $query->execute([
-        "email" => $email,
+        ":email" => $email,
         ":password" => $password
     ]);
 }
