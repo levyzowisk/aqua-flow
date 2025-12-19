@@ -15,3 +15,11 @@ CREATE TABLE funcionario(
     data_admissao DATE,
     PRIMARY KEY(id)
 );
+
+CREATE TABLE produto(
+    id INT AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL UNIQUE,
+    valor DECIMAL(10,2) NOT NULL,
+    estoque INT,
+    PRIMARY KEY(id)
+);

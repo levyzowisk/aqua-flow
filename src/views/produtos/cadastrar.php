@@ -8,20 +8,20 @@
             </div>
 
             <div class="modal-body">
-                <form>
+                <form method="post" action="../src/models/actions/produtos/insert.php">
                     <div class="mb-3">
-                        <label class="form-label">Nome</label>
-                        <input type="text" name="nome" required class="form-control">
+                        <label class="form-label">Nome *</label>
+                        <input type="text" id="nomeProd" oninput="validaNome(this)" name="nome" required class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Valor</label>
-                        <input type="number" step="0.5" name="valor" required class="form-control">
+                        <label class="form-label">Valor *</label>
+                        <input type="number" min="0" step="0.01" name="valor" required class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Estoque</label>
-                        <input type="number" step="1" name="estoque" required class="form-control">
+                        <label class="form-label">Estoque *</label>
+                        <input type="number" min="0" step="1" name="estoque" required class="form-control">
                     </div>
 
                     <div class="modal-footer">
@@ -33,3 +33,20 @@
         </div>
     </div>
 </div>
+
+<script>
+    const modalUsuario = document.getElementById('modalProduto');
+
+    modalUsuario.addEventListener('shown.bs.modal', () => {
+    document.getElementById('nomeProd').focus();
+  });
+
+    function validaNome(input) {
+        let nome = input.value;
+
+        nome = nome.replace(/[^a-zA-Z\u00C0-\u00FF ]/g, "");
+
+        input.value = nome;
+    }
+
+</script>

@@ -14,4 +14,8 @@
     function checkCPF($cpf) {
         return preg_match('/^\d{3}\.\d{3}\.\d{3}-\d{2}$/', $cpf); 
     }
+
+    function checkNumber($n) {
+        return floatval($n) >= 0;
+    }
 ?>

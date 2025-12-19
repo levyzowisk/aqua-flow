@@ -8,14 +8,6 @@
     $nome = $_POST["nome"] ?? "";
     $data_admissao = $_POST["data_admissao"] ?? "";
 
-    // var_dump($cpf);
-    // var_dump(checkCPF($cpf));
-    // exit();
-    var_dump($nome);
-    var_dump($data_admissao);
-    // exit();
-
-
     if(!required($cpf) || !required($nome) || !required($data_admissao) || !checkCPF($cpf)) {
         sessionError("Dados inválidos", 'funcionarios.php');
     }

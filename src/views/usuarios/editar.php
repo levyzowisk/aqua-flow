@@ -10,12 +10,12 @@
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label class="form-label">Email</label>
-                        <input type="text" name="email" id="emailUsuarioUp" class="form-control">
+                        <label class="form-label">Email *</label>
+                        <input type="text" name="email" id="emailUsuarioUp" required class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Senha</label>
+                        <label class="form-label">Senha *</label>
                         <input type="password" name="senha" required maxlength="8" class="form-control">
                     </div>
 

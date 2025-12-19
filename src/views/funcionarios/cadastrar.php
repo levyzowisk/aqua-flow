@@ -10,17 +10,17 @@
             <div class="modal-body">
                 <form action="../src/models/actions/funcionarios/insert.php" method="post">
                     <div class="mb-3">
-                        <label class="form-label">Nome Completo</label>
+                        <label class="form-label">Nome Completo *</label>
                         <input type="text" name="nome" required oninput="validaNome(this)" id="nomeFunc" placeholder="Chiquin da silva" class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">CPF</label>
+                        <label class="form-label">CPF *</label>
                         <input type="text" name="cpf" required oninput="mascaraCPF(this)" maxlength="14" placeholder="000.000.000-00" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Data de admissão</label>
+                        <label class="form-label">Data de admissão *</label>
                         <input type="date" name="data_admissao" required class="form-control">
                     </div>
 

@@ -10,17 +10,17 @@
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label class="form-label">Nome</label>
+                        <label class="form-label">Nome *</label>
                         <input type="text" name="nome" required class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Valor</label>
+                        <label class="form-label">Valor *</label>
                         <input type="number" step="0.5" name="valor" required class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Estoque</label>
+                        <label class="form-label">Estoque *</label>
                         <input type="number" step="1" name="estoque" required class="form-control">
                     </div>
 

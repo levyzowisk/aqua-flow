@@ -62,7 +62,7 @@ include_once 'editar.php';
 
                 <?php else: ?>
                     <tr>
-                        <td colspan="6" class="text-center">Sem dados cadastrados.</td>
+                        <td colspan="6" class="text-center px-3">Sem dados cadastrados.</td>
                     </tr>
 
                 <?php endif; ?>

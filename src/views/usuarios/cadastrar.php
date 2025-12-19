@@ -10,12 +10,12 @@
             <div class="modal-body">
                 <form action="../src/models/actions/usuarios/insert.php" method="post"> 
                     <div class="mb-3">
-                        <label class="form-label">Email</label>
+                        <label class="form-label">Email *</label>
                         <input type="email" name="email" placeholder="Chiquim@email.com" id="emailUsuario" maxlength="100" required class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Senha</label>
+                        <label class="form-label">Senha *</label>
                         <input type="password" name="senha" placeholder="Informe uma senha" required minlength="4" maxlength="8" class="form-control">
                     </div>
 
