@@ -19,6 +19,15 @@
         return $query->fetchAll();
     }
 
+    function listarFuncionarioAtivo() {
+        $query =  conexao()->prepare("SELECT * FROM funcionario WHERE data_admissao IS NULL");
+
+        $query->execute();
+
+        return $query->fetchAll();
+
+    }
+
     function criarFuncionario($cpf, $nome, $data_contratacao) {
         $query = conexao()->prepare("INSERT INTO funcionario (cpf, nome, data_contratacao)
             VALUES(:cpf, :nome, :data_contratacao)

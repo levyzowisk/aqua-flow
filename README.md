@@ -10,3 +10,8 @@
 ... Não mostrar todos os digitos do cpf
 
 ... Preciso implementar a ideia de vizualizar metas/vendas  de um funcionario, no modulo de usuário.
+
+... abrir modais de confirmação em ativar e demitir funcionario, não foi implementado.
+
+
+... Em tese eu posso somente ter uma venda se tiver colaboradores ativos e produtos cadastrados.

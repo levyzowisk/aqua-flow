@@ -1,4 +1,8 @@
-<div class="modal fade" id="modalCadastrar" tabindex="-1" aria-hidden="true">
+<?php 
+    $listaDeFuncionarios = listarFuncionarioAtivo();
+?>
+
+<div class="modal fade" id="modalCadastrarMeta" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
 
@@ -8,13 +12,14 @@
             </div>
 
             <div class="modal-body">
-                <form>
+                <form action="../src/models/actions/metas/insert.php" method="post">
                     <div class="mb-3">
                         <label class="form-label">Funcionario</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select required name="funcionario" id="selectMeta" class="form-select" aria-label="Default select example">
+                            <option value="" selected disabled hidden>Selecione um funcionário</option>
+                                <?php foreach($listaDeFuncionarios as $func): ?>
+                                    <option  value="<?= $func["id"]?>"><?=$func["nome"]?></option>
+                                <?php endforeach; ?>
                         </select>
                     </div>
 
@@ -25,7 +30,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Meta</label>
-                        <input type="number" name="meta" required class="form-control">
+                        <input type="number" min="1" name="meta" required class="form-control">
                     </div>
 
                     <div class="modal-footer">
@@ -34,9 +39,15 @@
                     </div>
                 </form>
             </div>
-
-
-
         </div>
     </div>
 </div>
+
+<script>
+    const modalUsuario = document.getElementById('modalCadastrarMeta');
+
+    modalUsuario.addEventListener('shown.bs.modal', () => {
+    document.getElementById('selectMeta').focus();
+  });
+
+</script>

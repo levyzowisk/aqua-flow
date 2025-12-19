@@ -23,3 +23,18 @@ CREATE TABLE produto(
     estoque INT,
     PRIMARY KEY(id)
 );
+
+CREATE TABLE meta (
+    id INT AUTO_INCREMENT,
+    id_funcionario INT,
+    mes_meta DATE NOT NULL,
+    valor_meta DECIMAL(10,2) NOT NULL,
+
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_funcionario) REFERENCES funcionario(id)
+);
+
+SELECT m.mes_meta, m.valor_meta, func.nome
+FROM meta m
+INNER JOIN funcionario func
+ON m.id_funcionario = func.id;
