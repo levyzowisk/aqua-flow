@@ -25,14 +25,12 @@
                 <?php foreach ($listaDeVendas as $venda): ?>
                 <tr class="">
                     <td class="text-center px-3"><?= $venda['id'] ?></td>
-                    <td class="text-center px-3"><?= htmlspecialchars($venda['funcionario']) ?></td>
-                    <td class="text-center px-3"><?= htmlspecialchars($venda['data']) ?></td>
+                    <td class="text-center px-3"><?= htmlspecialchars($venda['nome_funcionario']) ?></td>
+                    <td class="text-center px-3"><?= htmlspecialchars($venda['data_venda']) ?></td>
                     <td class="text-center px-3">   
-                        <?php foreach($venda['produtos'] as $prod): ?>
                             <span class="badge bg-light text-dark border mb-1">
-                                <?= $prod['qtd'] ?>x <?= $prod['nome'] ?>
+                                <?= $venda['quantidade'] ?>x <?= $venda['nome_produto'] ?>
                             </span>
-                        <?php endforeach; ?>
                     </td>
                     <td class="text-center px-3">
                         <button type="button" 

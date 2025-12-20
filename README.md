@@ -15,3 +15,5 @@
 
 
 ... Em tese eu posso somente ter uma venda se tiver colaboradores ativos e produtos cadastrados.
+
+... Não habilitar o botão de zerar estoque quando o estoque for zero.

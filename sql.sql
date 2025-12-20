@@ -34,7 +34,23 @@ CREATE TABLE meta (
     FOREIGN KEY (id_funcionario) REFERENCES funcionario(id)
 );
 
-SELECT m.mes_meta, m.valor_meta, func.nome
-FROM meta m
-INNER JOIN funcionario func
-ON m.id_funcionario = func.id;
+CREATE TABLE venda(
+    id INT AUTO_INCREMENT,
+    id_funcionario INT NOT NULL,
+    data_venda DATE NOT NULL,
+
+    PRIMARY KEY (id),
+    FOREIGN KEY(id_funcionario) REFERENCES funcionario(id)
+);
+
+CREATE TABLE venda_produto(
+    id INT AUTO_INCREMENT,
+    id_venda INT NOT NULL,
+    id_produto INT NOT NULL,
+    quantidade INT NOT NULL,
+
+    PRIMARY KEY(id),
+    FOREIGN KEY(id_venda) REFERENCES venda(id),
+    FOREIGN KEY(id_produto) REFERENCES produto(id)
+
+);
