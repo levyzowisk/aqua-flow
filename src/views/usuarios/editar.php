@@ -8,7 +8,7 @@
             </div>
 
             <div class="modal-body">
-                <form>
+                <form action="" id="formUpdateUser" method="post">
                     <div class="mb-3">
                         <label class="form-label">Email *</label>
                         <input type="text" name="email" id="emailUsuarioUp" required class="form-control">
@@ -38,15 +38,17 @@
 
   modalEditar.addEventListener('shown.bs.modal', function (event) {
     const button = event.relatedTarget;
-    inputEmail.focus();
-
-    const id = button.getAttribute('data-id');
+    
     const login = button.getAttribute('data-login');
+    const id = button.getAttribute('data-id');
+    const form = document.getElementById("formUpdateUser");
+    form.action = "./models/actions/usuarios/update.php?id=" + id ;
 
-    const inputId = modalEditar.querySelector('.modal-body #edit_id')
-    const inputLogin = modalEditar.querySelector('.modal-body #edit_login')
-
-    inputId.value = id
+    
+    
+    const inputLogin = modalEditar.querySelector('.modal-body #emailUsuarioUp');
+    
     inputLogin.value = login
-  })
+    inputEmail.focus();
+})
 </script>

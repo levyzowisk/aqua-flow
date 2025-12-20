@@ -15,7 +15,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Senha *</label>
+                        <label class="form-label">Senha *   </label>
                         <input type="password" name="senha" required maxlength="8" class="form-control">
                     </div>
 

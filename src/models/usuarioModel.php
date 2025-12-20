@@ -11,6 +11,16 @@ function usuarioExiste($email) {
     return $query->rowCount() > 0;
 }
 
+function buscarUsuarioPorId($id) {
+    $query = conexao()->prepare("SELECT * FROM usuario WHERE id = :id");
+
+    $query->execute([
+        ":id" => $id
+    ]);
+
+    return $query->rowCount() > 0;
+}
+
 function criarUsuario($email, $password) {
     $query = conexao()->prepare("INSERT INTO usuario (email, password)
         VALUES(:email, :password)
@@ -34,6 +44,18 @@ function deletarUsuario($id) {
     $query = conexao()->prepare("DELETE FROM usuario WHERE id = :id");
     $query->execute([
         "id" => $id
+    ]);
+}
+
+function atualizarUsuario($id, $email, $password) {
+    $query = conexao()->prepare("UPDATE usuario SET email = :email, password = :password
+        WHERE id = :id
+    ");
+
+    $query->execute([
+        ":id" => $id,
+        ":email" => $email,
+        ":password" => $password
     ]);
 }
 ?>
