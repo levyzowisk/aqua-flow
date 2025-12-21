@@ -11,6 +11,16 @@
         return $query->rowCount() > 0;
     }
 
+    function buscarFuncionarioPorId($id) {
+        $query = conexao()->prepare("SELECT * FROM funcionario WHERE id = :id");
+
+        $query->execute([
+            ":id" => $id
+        ]);
+
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
     function listarFuncionario() {
         $query =  conexao()->prepare("SELECT * FROM funcionario");
 
@@ -59,4 +69,46 @@
             ":id" => $id 
         ]);
     }
-?>
+
+    function buscarDetalhesDeVendaPorUsuario($id) {
+        $query = conexao()->prepare("SELECT p.nome as produto_nome,
+            vp.quantidade,
+            (vp.quantidade * p.valor) as total_item
+            FROM venda v 
+            INNER JOIN venda_produto vp ON v.id = vp.id_venda
+            INNER JOIN produto p ON vp.id_produto = p.id
+            WHERE v.id_funcionario = :id
+        ");
+
+        $query->execute([
+            ":id" => $id
+        ]);
+
+        return $query->fetchAll(PDO::FETCH_ASSOC);  
+    }
+
+    function buscarMetaPorFuncionario($id) {
+        $query = conexao()->prepare("SELECT * FROM meta WHERE id_funcionario = :id");
+
+        $query->execute([
+            ":id" => $id
+        ]);
+
+        return $query->fetch();  
+        
+    }
+
+    function atualizarFuncionario($id, $nome, $cpf, $data) {
+        $query = conexao()->prepare("UPDATE funcionario SET nome = :nome, cpf = :cpf, data_contratacao = :data_contratacao
+        WHERE id = :id
+        ");
+
+        $query->execute([
+            ":id" => $id,
+            ":nome" => $nome,
+            ":cpf" => $cpf,
+            ":data_contratacao" => $data
+        ]);
+    }
+
+?>  
