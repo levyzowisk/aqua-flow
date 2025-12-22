@@ -8,20 +8,21 @@
             </div>
 
             <div class="modal-body">
-                <form>
+                <form id="formMetaUp" method="post">
                     <div class="mb-3">
                         <label class="form-label">Funcionario</label>
-                        <input type="text" name="funcionario" required class="form-control">
+                        <select name="" disabled class="form-select" id="selectFunUp">
+                        </select>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Mes de Referência</label>
-                        <input type="date" name="mesRef" required class="form-control">
+                        <input type="date" name="mesRef" readonly id="mesRef" required class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Meta</label>
-                        <input type="number" name="meta" required class="form-control">
+                        <label class="form-label">Meta (R$)</label>
+                        <input type="number" id="valor" step="0.05" name="meta" required class="form-control">
                     </div>
 
                     <div class="modal-footer">
@@ -42,13 +43,27 @@
 
   modalEditar.addEventListener('show.bs.modal', function (event) {
     const button = event.relatedTarget;
+    const formMetaUp = document.getElementById("formMetaUp");
+    
+    const nome = button.getAttribute('data-funcionario');
+    const data = button.getAttribute('data-mes');
+    const valor = button.getAttribute('data-valor');
+    const id = button.getAttribute('data-id');
+    formMetaUp.action = "./models/actions/metas/update.php?id=" + id
+    
+    const inpuNome = modalEditar.querySelector('.modal-body #selectFunUp');
+    const inputData = modalEditar.querySelector('.modal-body #mesRef');
+    const inputValor = modalEditar.querySelector('.modal-body #valor');
 
-    const cpf = button.getAttribute('data-id')
+    const novaOpcao = document.createElement('option');
+    novaOpcao.textContent = nome;
+    novaOpcao.hidden = true;
+    novaOpcao.selected = true;
+    inpuNome.appendChild(novaOpcao);
+    console.log(novaOpcao);
+    inputData.value = data;
+    inputValor.value = valor;
+    
 
-    const inputId = modalEditar.querySelector('.modal-body #edit_id');
-    const inputLogin = modalEditar.querySelector('.modal-body #edit_login');
-
-    inputId.value = id
-    inputLogin.value = login
   })
 </script>

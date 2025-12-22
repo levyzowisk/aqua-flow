@@ -22,7 +22,6 @@
 
     }
 
-
     function cadastrarMeta($idFuncionario, $mes, $valor) {
         $query = conexao()->prepare("INSERT INTO meta (
             id_funcionario, mes_meta, valor_meta
@@ -36,4 +35,25 @@
             ":valor_meta" => $valor,
         ]);
     }
+
+    function buscarMetaPorId($id) {
+        $query = conexao()->prepare("SELECT * FROM meta WHERE id = :id");
+
+        $query->execute([
+            ":id" => $id
+        ]);
+        
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function atualizarMeta($id, $valor) {
+        $query = conexao()->prepare("UPDATE meta SET valor_meta = :valor
+            WHERE id = :id
+        ");
+
+        $query->execute([
+            ":id" => $id,
+            ":valor" => $valor
+        ]);
+    }   
 ?>

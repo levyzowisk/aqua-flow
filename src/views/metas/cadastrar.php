@@ -29,8 +29,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Meta</label>
-                        <input type="number" min="1" name="meta" required class="form-control">
+                        <label class="form-label">Meta (R$)</label>
+                        <input type="number" min="1" step="0.05" name="meta" required class="form-control">
                     </div>
 
                     <div class="modal-footer">

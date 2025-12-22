@@ -45,7 +45,10 @@
                                 class="btn btn-sm btn-warning" 
                                 data-bs-toggle="modal" 
                                 data-bs-target="#modalEditar"
-                                    data-id="<?= htmlspecialchars($metas['id']) ?>">
+                                data-id="<?= $metas["id"] ?>"
+                                data-mes="<?= $metas['mes_meta'] ?>"
+                                data-valor="<?= $metas['valor_meta'] ?>"
+                                data-funcionario="<?= htmlspecialchars($metas['nome']) ?>">
                                 Editar
                             </button>
                             <!-- <a href="./models/actions/metas/delete.php?id=<?= $metas['id'] ?>" class="btn btn-sm btn-danger">Excluir</a> -->

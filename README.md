@@ -22,6 +22,7 @@
 
 ... Tela de login, falta implementar.
 
+... Implementar a ideia de que primeiro tenha que logar e depois acessar as demais paginas(user authentication).
 
 ... Tela de dashboard
 
