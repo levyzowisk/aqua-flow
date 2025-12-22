@@ -7,7 +7,7 @@
   $valor = $_POST["valor"];
   $estoque = $_POST["estoque"];
 
-  if(!required($nome) || !required($valor) || !required($estoque) || checkNumber($estoque) || checkNumber($valor)) {
+  if(!required($nome) || !required($valor) || !required($estoque) || !checkNumber($estoque) || !checkNumber($valor)) {
     sessionError("Dados inválidos.", "produtos.php");
   }
 

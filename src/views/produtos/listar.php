@@ -35,7 +35,10 @@
                                 class="btn btn-sm btn-warning" 
                                 data-bs-toggle="modal" 
                                 data-bs-target="#modalEditar"
-                                data-id="<?= htmlspecialchars($user['id']) ?>">
+                                data-id="<?= htmlspecialchars($user['id']) ?>"
+                                data-valor="<?= htmlspecialchars($user['valor']) ?>"
+                                data-estoque="<?= htmlspecialchars($user['estoque']) ?>"
+                                data-nome="<?= htmlspecialchars($user['nome']) ?>">
                                 Editar
                             </button>
                             <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="prepararZerarEstoque(<?= $user['id'] ?>, <?= $user['estoque'] ?>)">

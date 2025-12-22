@@ -8,20 +8,20 @@
             </div>
 
             <div class="modal-body">
-                <form>
+                <form action="" method="post" id="formProdUp">
                     <div class="mb-3">
                         <label class="form-label">Nome *</label>
-                        <input type="text" name="nome" required class="form-control">
+                        <input type="text" id="nomeProdUp" name="nome" oninput="validaNome(this)" required class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Valor *</label>
-                        <input type="number" step="0.5" name="valor" required class="form-control">
+                        <label class="form-label">Valor (R$) *</label>
+                        <input type="number" step="0.5" id="valorProdUp" name="valor" required class="form-control">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Estoque *</label>
-                        <input type="number" step="1" name="estoque" required class="form-control">
+                        <input type="number" step="1" name="estoque" id="estoqueProdUp" required class="form-control">
                     </div>
 
                     <div class="modal-footer">
@@ -40,15 +40,33 @@
 <script>
   const modalEditar = document.getElementById('modalEditar');
 
-  modalEditar.addEventListener('show.bs.modal', function (event) {
+  modalEditar.addEventListener('shown.bs.modal', function (event) {
     const button = event.relatedTarget;
+    const formFuncUp = document.getElementById("formProdUp");
 
-    const cpf = button.getAttribute('data-id')
+    const id = button.getAttribute('data-id');
+    const nome = button.getAttribute('data-nome');
+    const valor = button.getAttribute('data-valor');
+    const estoque = button.getAttribute('data-estoque');
 
-    const inputId = modalEditar.querySelector('.modal-body #edit_id');
-    const inputLogin = modalEditar.querySelector('.modal-body #edit_login');
 
-    inputId.value = id
-    inputLogin.value = login
+    const inputNome = modalEditar.querySelector('.modal-body #nomeProdUp');
+    const inputValor = modalEditar.querySelector('.modal-body #valorProdUp');
+    const inputEstoque = modalEditar.querySelector('.modal-body #estoqueProdUp');
+    formFuncUp.action = "./models/actions/produtos/update.php?id=" + id;
+
+    inputNome.value = nome;
+    inputValor.value = valor;
+    inputEstoque.value = estoque;   
+    inputNome.focus();
+    inputEstoque.min = estoque;
   })
+
+      function validaNome(input) {
+        let nome = input.value;
+
+        nome = nome.replace(/[^a-zA-Z\u00C0-\u00FF ]/g, "");
+
+        input.value = nome;
+    }
 </script>

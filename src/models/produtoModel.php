@@ -41,4 +41,24 @@
         ]);
     }
 
+    function atualizarProduto($id, $nome, $valor, $estoque) {
+        $query = conexao()->prepare("UPDATE produto SET nome = :nome, valor = :valor, estoque = :estoque WHERE id = :id");
+
+        $query->execute([
+            ":nome" => $nome,
+            ":valor" => $valor,
+            ":estoque" => $estoque,
+            ":id" => $id
+        ]);
+    }
+
+    function buscarProdutoPorId($id) {
+        $query = conexao()->prepare("SELECT  * FROM produto WHERE id = :id");
+
+        $query->execute([
+            ":id" => $id
+        ]);
+
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
 ?>

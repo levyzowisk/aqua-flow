@@ -25,9 +25,6 @@
                     </div>
                 </form>
             </div>
-
-
-
         </div>
     </div>
 </div>
@@ -42,7 +39,7 @@
     const login = button.getAttribute('data-login');
     const id = button.getAttribute('data-id');
     const form = document.getElementById("formUpdateUser");
-    form.action = "./models/actions/usuarios/update.php?id=" + id ;
+    form.action = "./models/actions/usuarios/update.php?id=" + id;
 
     
     

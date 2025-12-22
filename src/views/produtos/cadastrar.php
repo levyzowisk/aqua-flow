@@ -15,7 +15,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Valor *</label>
+                        <label class="form-label">Valor (R$)*</label>
                         <input type="number" min="0" step="0.01" name="valor" required class="form-control">
                     </div>
 
