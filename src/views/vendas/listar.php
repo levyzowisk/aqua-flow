@@ -1,15 +1,42 @@
 <?php 
     include_once 'cadastrar.php';
     include_once 'editar.php';
+    
+    $listaDeFuncionarios = listarFuncionarioAtivo();
+    // var_dump(count($listaDeFuncionarios) > 0);
+    $listaDeProdutos = listarProdutoComEstoque();
+    // var_dump($listaDeProdutos);
+    // var_dump(count($listaDeProdutos) == 0);
 ?>
 
 <div class="card">
     <div class="card-header  d-flex justify-content-between">
         <h3>Gerenciamento de Vendas</h3>
-        <button data-bs-toggle="modal" data-bs-target="#modalUsuario" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovo">
-            Nova Venda
-        </button>
+         <?php if(count($listaDeFuncionarios) == 0): ?>
+                        <button data-bs-toggle="modal" disabled data-bs-target="#modalCadastrarMeta" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovo">
+                Nova Meta
+            </button>  
+        </div>
+            <div class="alert alert-warning" role="alert">
+                Não há funcionários ativos. Cadastre funcionários antes de criar metas.
+            </div>
+      
     </div>
+    <?php elseif (count($listaDeProdutos) == 0): ?>
+                <button data-bs-toggle="modal" disabled data-bs-target="#modalCadastrarMeta" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovo">
+                Nova Meta
+            </button>  
+        </div>
+            <div class="alert alert-warning" role="alert">
+                 Não há produtos em estoque. Cadastre os itens necessários antes de registrar vendas.
+            </div>
+        <?php else: ?>
+      <button data-bs-toggle="modal" data-bs-target="#modalCadastrarMeta" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovo">
+                Nova Meta
+            </button>
+    </div>
+
+        <?php endif; ?>
     <div class="card-body d-flex justify-content-center">
         <table class="table table-striped table-hover w-full">
             <thead>
@@ -18,8 +45,7 @@
                     <th class="text-center px-3">Funcionário</th>
                     <th class="text-center px-3">Data de Operação</th>
                     <th class="text-center px-3">Produtos Vendidos</th>
-                    <th class="text-center px-3">Ações</th>
-                </tr>
+                    </tr>
             </thead>
             <tbody >
                 <?php foreach ($listaDeVendas as $venda): ?>
@@ -32,20 +58,27 @@
                                 <?= $venda['quantidade'] ?>x <?= $venda['nome_produto'] ?>
                             </span>
                     </td>
-                    <td class="text-center px-3">
-                        <button type="button" 
-                            class="btn btn-sm btn-warning" 
-                            data-bs-toggle="modal" 
-                            data-bs-target="#modalEditar"
-                            data-id="<?= $venda['id'] ?>" 
-                            data-login="<?= htmlspecialchars($venda['id']) ?>">
-                            Editar
-                        </button>
-                        <a href="excluir_usuario.php?id=<?= $venda['id'] ?>" class="btn btn-sm btn-danger">Excluir</a>
-                    </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </div>
 </div>
+
+<?php if ($feedback): ?>    
+    <script>
+        Toastify({
+        text: "<?= $feedback["msg"] ?>",
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top",
+        position: "right", 
+        stopOnFocus: true, 
+        style: {
+            background: "linear-gradient(to right, <?= $feedback['cor1'] ?>, <?= $feedback['cor2'] ?>)",  },
+        }).showToast();
+    </script>
+
+<?php endif; ?> 

@@ -19,6 +19,14 @@
         return $query->fetchAll();
     }
 
+    function listarProdutoComEstoque() {
+        $query = conexao()->prepare("SELECT * FROM produto WHERE estoque > 0");
+
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
     function criarProduto($nome, $valor, $estoque) {
         $query = conexao()->prepare("INSERT INTO produto (nome, valor, estoque)
             VALUES(:nome, :valor, :estoque)
@@ -61,4 +69,19 @@
 
         return $query->fetch(PDO::FETCH_ASSOC);
     }
+
+    function abaterEstoque($produtos, $quantidades) {
+        $query = conexao()->prepare("UPDATE produto SET estoque = estoque - :quantidade WHERE id = :id");
+
+        for ($i = 0; $i < count($produtos); $i++) {
+        $idProd = $produtos[$i];
+        $qtdVendida = $quantidades[$i];
+
+        $query->execute([
+            ':quantidade' => $qtdVendida,
+            ':id'  => $idProd
+        ]);
+    }
+    }
+
 ?>

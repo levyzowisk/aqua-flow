@@ -28,3 +28,7 @@
 
 
 
+
+... Destacar as verificações que existem entre os modulos:
+Só o possivel cadastrar uma meta se tiver funcionario ativo
+So é possivel cadastrar uma venda, se tiver funcionarios ativos e produtos com estoque maior que 0;

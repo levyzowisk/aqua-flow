@@ -8,4 +8,21 @@
 
         return $query->fetchAll();
     }
+
+    function criarVenda($idFuncionario, $data) {
+        $pdo = conexao();
+        
+        $query = $pdo->prepare("INSERT INTO venda (id_funcionario, data_venda)
+            VALUES (:idFuncionario, :data_venda)
+        ");
+
+        $query->execute([
+            ":idFuncionario" => $idFuncionario,
+            ":data_venda" => $data
+        ]);
+
+        return $pdo->lastInsertId();
+    }
+
+
 ?>
