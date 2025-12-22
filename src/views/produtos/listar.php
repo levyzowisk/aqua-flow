@@ -23,27 +23,35 @@
             </thead>
             <tbody>
                 <?php if(count($listaDeProdutos) > 0): ?>
-                    <?php foreach ($listaDeProdutos as $user): ?>
+                    <?php foreach ($listaDeProdutos as $prod): ?>
                     <tr>
                         
-                        <td class="text-center px-3"><?= htmlspecialchars($user['id']) ?></td>
-                        <td class="text-center px-3"><?= htmlspecialchars($user['nome']) ?></td>
-                        <td class="text-center px-3"><?= htmlspecialchars($user['valor']) ?></td>
-                        <td class="text-center px-3"><?= htmlspecialchars($user['estoque']) ?></td>
+                        <td class="text-center px-3"><?= htmlspecialchars($prod['id']) ?></td>
+                        <td class="text-center px-3"><?= htmlspecialchars($prod['nome']) ?></td>
+                        <td class="text-center px-3"><?= htmlspecialchars($prod['valor']) ?></td>
+                        <td class="text-center px-3"><?= htmlspecialchars($prod['estoque']) ?></td>
                         <td class="text-center px-3">
                             <button type="button" 
                                 class="btn btn-sm btn-warning" 
                                 data-bs-toggle="modal" 
                                 data-bs-target="#modalEditar"
-                                data-id="<?= htmlspecialchars($user['id']) ?>"
-                                data-valor="<?= htmlspecialchars($user['valor']) ?>"
-                                data-estoque="<?= htmlspecialchars($user['estoque']) ?>"
-                                data-nome="<?= htmlspecialchars($user['nome']) ?>">
+                                data-id="<?= htmlspecialchars($prod['id']) ?>"
+                                data-valor="<?= htmlspecialchars($prod['valor']) ?>"
+                                data-estoque="<?= htmlspecialchars($prod['estoque']) ?>"
+                                data-nome="<?= htmlspecialchars($prod['nome']) ?>">
                                 Editar
                             </button>
-                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="prepararZerarEstoque(<?= $user['id'] ?>, <?= $user['estoque'] ?>)">
+
+                            <?php if($prod["estoque"] > 0): ?>                            
+                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="prepararZerarEstoque(<?= $prod['id'] ?>, <?= $prod['estoque'] ?>)">
                                 Zerar Estoque
                             </button>
+                            <?php else: ?>
+                            <button type="button" class="btn btn-sm btn-danger" disabled data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="prepararZerarEstoque(<?= $prod['id'] ?>, <?= $prod['estoque'] ?>)">
+                                Zerar Estoque
+                            </button>
+
+                            <?endif; ?>
                             </td>
                     </tr>
                     <?php endforeach; ?>
