@@ -82,8 +82,7 @@
 
 
                     <div class="ms-auto d-flex align-items-center">
-                        <span class="text-secondary me-3">Olá, <strong>1</strong></span>
-                        <a href="#" class="btn btn-sm btn-outline-danger d-flex align-items-center gap-2">
+                        <a href="../src/models/actions/autenticacao/logout.php" class="btn btn-sm btn-outline-danger d-flex align-items-center gap-2">
                             <i class="fas fa-sign-out-alt"></i> Sair
                         </a>
                     </div>

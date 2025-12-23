@@ -58,4 +58,15 @@ function atualizarUsuario($id, $email, $password) {
         ":password" => $password
     ]);
 }
+
+    function buscarUsuarioPorEMail($email) {
+        $query = conexao()->prepare("SELECT * FROM usuario WHERE email = :email");
+
+        $query->execute([
+            ":email" => $email,
+        ]);
+
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
 ?>

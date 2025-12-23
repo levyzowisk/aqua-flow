@@ -1,6 +1,7 @@
 <?php 
-    session_start();
+    require_once './models/utils/auth.php';
     $feedback = null;
+    exigirLogin();
 
     if(isset($_SESSION["feedback"])) {
         $feedback = $_SESSION["feedback"];

@@ -8,7 +8,7 @@
     }
 
     function applyHash($text) {
-        return hash("sha256", $text);
+        return password_hash($text, PASSWORD_DEFAULT);
     }
 
     function checkCPF($cpf) {
