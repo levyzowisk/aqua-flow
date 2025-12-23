@@ -25,5 +25,5 @@
     'id' => $usuario['id'],
     'nome' => $usuario['nome'],
     ];
-    sessionSucess("Login efetuado", "usuarios.php");
+    sessionSucess("Login efetuado", "dashboard.php");
 ?>

@@ -33,6 +33,13 @@
                     </li>
 
                     <li class="nav-item">
+                        <a href="dashboard.php" class="nav-link  d-flex align-items-center mb-1 <?php echo $url === '/aqua-flow/src/dashboard.php' ? 'active text-white' : 'text-white-50';  ?>">
+                            <i class="fas fa-home me-3 text-center" style="width: 20px;"></i> 
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="usuarios.php" class="nav-link d-flex  align-items-center mb-1 <?php echo $url === '/aqua-flow/src/usuarios.php' ? 'active text-white' : 'text-white-50';  ?>">
                             <i class="fas fa-users me-3 text-center" style="width: 20px;"></i> 
                             Usuários
